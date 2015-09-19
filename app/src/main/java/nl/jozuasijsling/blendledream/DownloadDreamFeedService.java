@@ -24,8 +24,12 @@
 
 package nl.jozuasijsling.blendledream;
 
+import android.text.format.DateUtils;
+
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
+import com.google.android.gms.gcm.PeriodicTask;
+import com.google.android.gms.gcm.Task;
 import com.google.android.gms.gcm.TaskParams;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -53,11 +57,17 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
  */
 public class DownloadDreamFeedService extends GcmTaskService {
 
-    private static final String TAG = "DownloadFeedService";
+    public static final String TAG = "DownloadFeedService";
 
     @Inject OkHttpClient mOkHttpClient;
     @Inject Gson mGson;
     @Inject ApiObjectMapper mApiMapper;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        BlendleDreamApplication.getMainComponent().inject(this);
+    }
 
     @Override
     public int onRunTask(TaskParams taskParams) {
@@ -88,7 +98,7 @@ public class DownloadDreamFeedService extends GcmTaskService {
                         "Will start mapping to the domain model.");
 
                 // Map objects to domain variants.
-                List<BlendleIssue> issues = mApiMapper.mapToBlendleIssues(mostRecent.getEmbedded());
+                List<BlendleIssue> issues = mApiMapper.mapToBlendleIssues(mostRecent.getEmbedded().getIssues());
                 Timber.tag(TAG).d("Successfully mapped " + issues.size() + " issues. Will update the local database.");
 
                 // Replace the database entries with the new feed.
@@ -114,5 +124,18 @@ public class DownloadDreamFeedService extends GcmTaskService {
     @Override
     public void onInitializeTasks() {
         super.onInitializeTasks();
+
+        // If there's a connection download every hour with a flex window of 15 minutes.
+        PeriodicTask periodicDownloadTask = new PeriodicTask.Builder()
+                .setRequiredNetwork(Task.NETWORK_STATE_CONNECTED)
+                .setPeriod(DateUtils.HOUR_IN_MILLIS)
+                .setFlex(15 * DateUtils.MINUTE_IN_MILLIS)
+                .setPersisted(true)
+                .setService(DownloadDreamFeedService.class)
+                .setTag(TAG)
+                .build();
+
+        GcmNetworkManager.getInstance(this).schedule(periodicDownloadTask);
+        Timber.tag(TAG).d("Reinitialized periodic downloads. Next download will happen in one hour.");
     }
 }

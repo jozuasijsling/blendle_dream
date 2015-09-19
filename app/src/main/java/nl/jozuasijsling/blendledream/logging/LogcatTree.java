@@ -45,12 +45,10 @@ public class LogcatTree extends Timber.Tree {
     @Override
     protected void log(int priority, String tag, String message, Throwable t) {
 
-        if (Log.isLoggable(tag, priority)) {
-            if (t == null) {
-                Log.println(priority, tag, message);
-            } else {
-                Log.println(priority, tag, message + '\n' + Log.getStackTraceString(t));
-            }
+        if (t == null) {
+            Log.println(priority, tag, message);
+        } else {
+            Log.println(priority, tag, message + '\n' + Log.getStackTraceString(t));
         }
     }
 

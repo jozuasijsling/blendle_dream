@@ -25,6 +25,7 @@
 package nl.jozuasijsling.blendledream.module;
 
 import dagger.Module;
+import dagger.Provides;
 import nl.jozuasijsling.blendledream.mapping.ApiObjectMapper;
 
 /**
@@ -33,6 +34,7 @@ import nl.jozuasijsling.blendledream.mapping.ApiObjectMapper;
 @Module
 public class DataModule {
 
+    @Provides
     public ApiObjectMapper providerObjectMapper() {
         return new ApiObjectMapper();
     }

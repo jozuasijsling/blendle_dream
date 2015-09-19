@@ -32,10 +32,14 @@ import java.util.Date;
  */
 public class BlendleIssue {
 
-    @NonNull private final String mId;
-    @NonNull private final Date mInitialPublicationTime;
-    @NonNull private final Date mDate;
-    @NonNull private final ArticleManifest mManifest;
+    private String mId;
+    private Date mInitialPublicationTime;
+    private Date mDate;
+    private ArticleManifest mManifest;
+
+    // For use by cupboard
+    public BlendleIssue() {
+    }
 
     public BlendleIssue(@NonNull String id,
                         @NonNull Date initialPublicationTime,

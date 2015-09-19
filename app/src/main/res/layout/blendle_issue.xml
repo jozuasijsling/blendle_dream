@@ -34,7 +34,7 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:src="@drawable/blendle_logo"
+        tools:src="@drawable/blendle_generic_cover"
         />
 
     <LinearLayout
@@ -48,9 +48,6 @@
             android:id="@+id/provider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/gray_transparent"
-            android:padding="4dp"
-            android:textColor="@color/white"
             tools:text="NRC"
             />
 
@@ -58,9 +55,6 @@
             android:id="@+id/publication_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/gray_transparent"
-            android:padding="4dp"
-            android:textColor="@color/white"
             tools:text="21 maart 2015"
             />
 
@@ -68,7 +62,17 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="12dp"
+            android:layout_margin="12dp"
+            />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Door Gren Beck"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="end"
             />
 
         <ScrollView
@@ -81,19 +85,7 @@
                 android:id="@+id/content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/gray_transparent"
-                android:padding="4dp"
-                android:textColor="@color/white"
-                tools:text="Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen.
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen
-                Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen"
-                />
+                tools:text="Wielerjournalist Jean Nelissen (1936-2010) doet in 1989 de redactie van De Limburger splijten. De hoofdredacteuren Frans Wijnands en Nico Bergkamp eisen dat Nelissen stopt met schnabbelen, onder andere als wielercommentator voor de NOS. Nelissen, bijna een kwart eeuw in dienst bij de krant, buit het sluimerende verzet tegen de hoofdredactie uit met een motie van wantrouwen. Exit Wijnands en Bergkamp. Zijn eigen val volgt vijf jaar later. Nelissen, al jarenlang alcoholist, komt steeds meer alleen."/>
 
         </ScrollView>
 

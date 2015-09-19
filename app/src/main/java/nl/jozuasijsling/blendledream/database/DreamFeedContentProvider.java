@@ -129,6 +129,7 @@ public class DreamFeedContentProvider extends ContentProvider {
         }
 
         Timber.d("Replaced all " + rowsDeleted + " issues with " + values.length + " new issues.");
+        getContext().getContentResolver().notifyChange(DreamFeedContentUris.ISSUES_URI, null);
 
         return values.length;
     }

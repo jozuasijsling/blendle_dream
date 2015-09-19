@@ -30,6 +30,7 @@ import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
 
 import dagger.Module;
+import dagger.Provides;
 
 /**
  * Manages setup of http related dependencies.
@@ -37,13 +38,16 @@ import dagger.Module;
 @Module
 public class NetworkModule {
 
+    @Provides
     public OkHttpClient provideOkHttpClient() {
         return new OkHttpClient();
     }
 
+    @Provides
     public Gson provideGson() {
         return new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ")
                 .create();
     }
 

@@ -129,7 +129,7 @@ public class ApiObjectMapper {
     @NonNull
     public BlendleIssue mapToBlendleIssue(@NonNull Issue issue) {
 
-        Manifest embeddedManifest = issue.getEmbedded();
+        Manifest embeddedManifest = issue.getEmbedded().getManifest();
         ArticleManifest mappedManifest = mapToArticleManifest(embeddedManifest);
 
         String id = issue.getId();

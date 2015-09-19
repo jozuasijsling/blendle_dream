@@ -37,12 +37,16 @@ public class ContentElement {
     public static final String TYPE_HEADER_1 = "hl1";
     public static final String TYPE_HEADER_2 = "hl2";
     public static final String TYPE_INTRO = "intro";
-    public static final String TYPE_BY_LINE = "byLine";
+    public static final String TYPE_BYLINE = "byline";
     public static final String TYPE_PARAGRAPH = "p";
+    public static final String TYPE_KICKER = "kicker";
+    public static final String TYPE_LEAD = "lead";
+    public static final String TYPE_PH = "ph";
 
     // Should be sorted in ascending alphabetical order to allow binary search.
-    private static final String[] ALL_TYPES =
-            {TYPE_BY_LINE, TYPE_HEADER_1, TYPE_HEADER_2, TYPE_INTRO, TYPE_PARAGRAPH};
+    private static final String[] ALL_TYPES = {
+            TYPE_BYLINE, TYPE_HEADER_1, TYPE_HEADER_2, TYPE_INTRO,
+            TYPE_KICKER, TYPE_LEAD, TYPE_PARAGRAPH, TYPE_PH};
 
     @NonNull @Type private final String mType;
     @NonNull private final String mContent;
@@ -62,7 +66,7 @@ public class ContentElement {
         return mType;
     }
 
-    @StringDef({TYPE_HEADER_1, TYPE_HEADER_2, TYPE_INTRO, TYPE_BY_LINE, TYPE_PARAGRAPH})
+    @StringDef({TYPE_HEADER_1, TYPE_HEADER_2, TYPE_INTRO, TYPE_BYLINE, TYPE_PARAGRAPH})
     public @interface Type {
     }
 

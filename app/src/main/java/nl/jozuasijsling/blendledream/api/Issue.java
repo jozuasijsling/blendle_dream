@@ -43,7 +43,7 @@ public class Issue {
     private Date initialPublicationTime;
     private Date date;
     private String[] items;
-    private Manifest _embedded;
+    private EmbeddedManifest _embedded;
 
     public int getFormatVersion() {
         return formatVersion;
@@ -109,11 +109,11 @@ public class Issue {
         this.items = items;
     }
 
-    public Manifest getEmbedded() {
+    public EmbeddedManifest getEmbedded() {
         return _embedded;
     }
 
-    public void setEmbedded(Manifest embedded) {
+    public void setEmbedded(EmbeddedManifest embedded) {
         this._embedded = embedded;
     }
 
@@ -208,6 +208,19 @@ public class Issue {
                     ", pages=" + pages +
                     ", page_preview=" + page_preview +
                     '}';
+        }
+    }
+
+    public static class EmbeddedManifest {
+
+        private Manifest manifest;
+
+        public Manifest getManifest() {
+            return manifest;
+        }
+
+        public void setManifest(Manifest manifest) {
+            this.manifest = manifest;
         }
     }
 }

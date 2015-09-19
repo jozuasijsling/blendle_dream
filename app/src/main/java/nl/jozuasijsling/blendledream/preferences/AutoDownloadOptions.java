@@ -22,74 +22,44 @@
  * OR SELL ANYTHING THAT IT  MAY DESCRIBE, IN WHOLE OR IN PART.
  */
 
-package nl.jozuasijsling.blendledream.api;
+package nl.jozuasijsling.blendledream.preferences;
 
-import java.util.Arrays;
-
-import nl.jozuasijsling.blendledream.api.references.PageRef;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 
 /**
- *
+ * Wrapper for a shared preferences file that holds auto download settings.
  */
-public class MostRecentResource {
+public class AutoDownloadOptions {
 
-    private Links _links;
-    private EmbeddedIssues _embedded;
+    public static final String SHARED_PREFERENCES_NAME = "auto_download_options";
+    private static final String KEY_ENABLED = "enabled";
 
-    public Links getLinks() {
-        return _links;
+    private final boolean mEnabled;
+
+    public AutoDownloadOptions(boolean enabled) {
+        mEnabled = enabled;
     }
 
-    public void setLinks(Links links) {
-        this._links = links;
+    public boolean isEnabled() {
+        return mEnabled;
     }
 
-    public EmbeddedIssues getEmbedded() {
-        return _embedded;
+    @NonNull
+    public static AutoDownloadOptions fromPreferences(@NonNull Context context) {
+        SharedPreferences preferences = getSharedPreferences(context);
+        boolean enabled = preferences.getBoolean(KEY_ENABLED, false);
+        return new AutoDownloadOptions(enabled);
     }
 
-    public void setEmbedded(EmbeddedIssues embedded) {
-        this._embedded = embedded;
+    public void writeToPreferences(@NonNull Context context) {
+        SharedPreferences preferences = getSharedPreferences(context);
+        preferences.edit().putBoolean(KEY_ENABLED, mEnabled).apply();
     }
 
-    public static class Links {
-        private PageRef self;
-        private PageRef[] issues;
-
-        public PageRef getSelf() {
-            return self;
-        }
-
-        public void setSelf(PageRef self) {
-            this.self = self;
-        }
-
-        public PageRef[] getIssues() {
-            return issues;
-        }
-
-        public void setIssues(PageRef[] issues) {
-            this.issues = issues;
-        }
-
-        @Override
-        public String toString() {
-            return "{" +
-                    "self=" + self +
-                    ", issues=" + Arrays.toString(issues) +
-                    '}';
-        }
-    }
-
-    public static class EmbeddedIssues {
-        private Issue[] issues;
-
-        public Issue[] getIssues() {
-            return issues;
-        }
-
-        public void setIssues(Issue[] issues) {
-            this.issues = issues;
-        }
+    @NonNull
+    private static SharedPreferences getSharedPreferences(@NonNull Context context) {
+        return context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 }

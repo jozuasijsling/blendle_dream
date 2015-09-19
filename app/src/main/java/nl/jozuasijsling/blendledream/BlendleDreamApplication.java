@@ -25,6 +25,8 @@
 package nl.jozuasijsling.blendledream;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
@@ -36,6 +38,10 @@ import nl.jozuasijsling.blendledream.domain.ArticleManifest;
 import nl.jozuasijsling.blendledream.domain.BlendleIssue;
 import nl.jozuasijsling.blendledream.logging.Forester;
 import nl.jozuasijsling.blendledream.mapping.GsonFieldConverter;
+import nl.jozuasijsling.blendledream.module.BlendleDreamComponent;
+import nl.jozuasijsling.blendledream.module.DaggerBlendleDreamComponent;
+import nl.jozuasijsling.blendledream.module.DataModule;
+import nl.jozuasijsling.blendledream.module.NetworkModule;
 import nl.qbusict.cupboard.Cupboard;
 import nl.qbusict.cupboard.CupboardBuilder;
 import nl.qbusict.cupboard.CupboardFactory;
@@ -45,16 +51,22 @@ import nl.qbusict.cupboard.CupboardFactory;
  */
 public class BlendleDreamApplication extends Application {
 
+    @Nullable private static BlendleDreamComponent sMainComponent;
+
     @Inject Gson mGson;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-
+        setupDagger();
         setupCrashlytics();
         setupTimber();
         setupCupboard();
+    }
+
+    private void setupDagger() {
+        getMainComponent().inject(this);
     }
 
     private void setupCrashlytics() {
@@ -77,5 +89,16 @@ public class BlendleDreamApplication extends Application {
 
         // set custom cupboard as global instance
         CupboardFactory.setCupboard(cupboard);
+    }
+
+    @NonNull
+    public static BlendleDreamComponent getMainComponent() {
+        if (sMainComponent == null) {
+            sMainComponent = DaggerBlendleDreamComponent.builder()
+                    .dataModule(new DataModule())
+                    .networkModule(new NetworkModule())
+                    .build();
+        }
+        return sMainComponent;
     }
 }
