@@ -1,0 +1,149 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
+
+    defaultConfig {
+        applicationId 'nl.jozuasijsling.blendledream'
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName '0.0.1'
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles 'proguard-blendle-dream.pro',
+                    'libs/proguard-butterknife-7.pro',
+                    'libs/proguard-crashlytics.pro',
+                    'libs/proguard-glide.pro',
+                    'libs/proguard-icepick.pro',
+                    'libs/proguard-square-okhttp.pro',
+                    'libs/proguard-support-design.pro',
+                    'libs/proguard-support-v7-appcompat.pro'
+        }
+    }
+}
+
+dependencies {
+
+    repositories {
+        maven { url "https://clojars.org/repo/" }
+    }
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+
+    /**
+     * Needed for the GCM Network Manager
+     */
+    compile 'com.google.android.gms:play-services-gcm:7.8.0'
+
+    /**
+     * OkHttp
+     *   Homepage: http://square.github.io/okhttp/
+     *   Usage: As an HTTP client optimized for mobile devices
+     *   Author: Square Inc.
+     *   License: Apache License 2.0
+     */
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+
+    /**
+     * Gson
+     *   Homepage: https://github.com/google/gson
+     *   Usage: For parsing JSON from Blendle's API
+     *   Author: Google
+     *   License: Apache License 2.0
+     */
+    compile 'com.google.code.gson:gson:2.3.1'
+
+    /**
+     * Cupboard
+     *   Homepage: https://bitbucket.org/qbusict/cupboard
+     *   Usage: To reduce database management boilerplate
+     *   Author: Hugo Visser
+     *   License: Apache License 2.0
+     */
+    compile 'nl.qbusict:cupboard:2.1.2'
+
+    /**
+     * Glide
+     *   Homepage: http://square.github.io/okhttp
+     *   Usage: Manages image download and display
+     *   Author: Google
+     *   License: Custom
+     */
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+
+    /**
+     * Dagger 2
+     *  Homepage: https://github.com/google/dagger
+     *  Usage: Dependency injection to promote decoupled code
+     *  Author: Square Inc. & Google
+     *  License: Apache License 2.0
+     */
+    compile 'com.google.dagger:dagger:2.0.1'
+
+    /**
+     * Butter Knife
+     *   Homepage: https://github.com/JakeWharton/butterknife
+     *   Usage: To reduce view injection and view event boilerplate
+     *   Author: Jake Wharton
+     *   License: Apache License 2.0
+     */
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    /**
+     * Icepick
+     *   Homepage: https://github.com/frankiesardo/icepick
+     *   Usage: To reduce state restoration boilerplate
+     *   Author: Frankie Sardo
+     *   License: Eclipse Public License 1.0
+     */
+    compile 'frankiesardo:icepick:3.1.0'
+    provided 'frankiesardo:icepick-processor:3.1.0'
+
+    /**
+     * KenBurnsView
+     *   Homepage: https://github.com/flavioarfaria/KenBurnsView/
+     *   Usage: To apply the Ken Burn's effect on images
+     *   Author: Flávio Faria
+     *   License: Apache License 2.0
+     */
+    compile 'com.flaviofaria:kenburnsview:1.0.6'
+
+    /**
+     * Timber
+     *   Homepage: https://github.com/JakeWharton/timber
+     *   Usage: To reduce logging boilerplate
+     *   Author: Jake Wharton
+     *   License: Apache License 2.0
+     */
+    compile 'com.jakewharton.timber:timber:3.1.0'
+
+    /**
+     * Crashlytics
+     *   Homepage: http://crashlytics.com
+     *   Usage: For crash and error reporting
+     *   Author: Twitter
+     */
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
+        transitive = true;
+    }
+}
