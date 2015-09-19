@@ -1,4 +1,4 @@
-# blendle_dream
+# Blendle Dream
 A simple day dream that displays article manifests from Blendle's static Most Recent API.
 
 Uses GCM Network Manager from Google Play Services to schedule periodic downloads, to keep its content up to date. 
