@@ -9,6 +9,7 @@ The design has been inspired by Flipboard's day dream, which shows snippets of i
 At the moment, the feed is shown and animated, but it might be nice to make this day dream interactive. For instance to 
 allow deep linking into Blendle's native app.
 
+
 While I don't expect to continue work on this project, in case anyone wants to pick it up, here's a list of issues that will need a bit more thought: 
 
 * The KenBurns effect is often zooms in too much making the background display very ugly.
