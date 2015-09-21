@@ -43,12 +43,14 @@ import android.text.format.DateUtils;
 import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.flaviofaria.kenburnsview.RandomTransitionGenerator;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.gcm.GcmNetworkManager;
@@ -73,7 +75,8 @@ import timber.log.Timber;
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 /**
- *
+ * The day dream itself. Displays issues from the Most Recent feed by switching between
+ * issues every 30 seconds.
  */
 public class BlendleDreamService extends DreamService {
 
@@ -126,6 +129,9 @@ public class BlendleDreamService extends DreamService {
         View contentView = LayoutInflater.from(this).inflate(R.layout.blendle_dream, null, false);
         setContentView(contentView);
         ButterKnife.bind(this, contentView);
+
+        mBackgroundImageView.setTransitionGenerator(
+                new RandomTransitionGenerator(10_000L, new AccelerateDecelerateInterpolator()));
 
         setupAnimations();
         initAutoDownload();
