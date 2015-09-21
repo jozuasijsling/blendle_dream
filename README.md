@@ -12,5 +12,5 @@ allow deep linking into Blendle's native app.
 While I don't expect to continue work on this project, in case anyone wants to pick it up, here's a list of issues that will need a bit more thought: 
 
 * The KenBurns effect is often zooms in too much making the background display very ugly.
-* The body is a collection of spannables, but it's indexes seem to be set incorrectly. This probably has to do with Html.fromHtml() messing up the character indexes.
+* The issue body text is a collection of spannables, its span indexes are sometimes set incorrectly. This probably has to do with Html.fromHtml() messing up the character indexes.
 * When starting the day dream for the first time, GCM waits up to 30 seconds before downloading the issues. This can be fixed by replacing the OneOffTask by a simple AsyncTask or Loader. 
